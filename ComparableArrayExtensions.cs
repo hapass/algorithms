@@ -29,7 +29,7 @@ namespace sorting
 
 		private static void AssertInsideArray(IComparable[] array, int index, string name)
 		{
-			Debug.Assert(0 > index && index < array.Length, $"Assertion failed: index {name} is outside the array bounds.");
+			Debug.Assert(0 <= index && index < array.Length, $"Assertion failed: index {name} is outside the array bounds.");
 		}
 
 		public static void Print(this IComparable[] array)
