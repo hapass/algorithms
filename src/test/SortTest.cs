@@ -8,7 +8,7 @@ namespace Test
     public class SortTest
     {
         [Fact]
-        public void InsertionSortTest()
+        public void InsertionSortSortsArray()
         {
             var testCollection = GetTestCharArray();
 
@@ -18,7 +18,7 @@ namespace Test
         }
 
         [Fact]
-        public void SelectionSortTest()
+        public void SelectionSortSortsArray()
         {
             var testCollection = GetTestCharArray();
 
@@ -28,7 +28,7 @@ namespace Test
         }
 
         [Fact]
-        public void ShellSortTest()
+        public void ShellSortSortsArray()
         {
             var testCollection = GetTestCharArray();
 
