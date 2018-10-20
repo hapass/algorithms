@@ -1,0 +1,7 @@
+language: csharp
+mono: none
+dotnet: 2.1.403
+before_script: cd src
+script:
+ - dotnet build
+ - dotnet test test/test.csproj
