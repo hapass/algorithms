@@ -5,8 +5,6 @@ namespace Sorting
 {
     public static class ComparableArrayExtensions
     {
-        private const string ElementDelimiter = " ";
-
         public static void Sort(this IComparable[] array, ISortStrategy strategy)
         {
             strategy.Sort(array);
@@ -30,15 +28,6 @@ namespace Sorting
         private static void AssertInsideArray(IComparable[] array, int index, string name)
         {
             Debug.Assert(0 <= index && index < array.Length, $"Assertion failed: index {name} is outside the array bounds.");
-        }
-
-        public static void Print(this IComparable[] array)
-        {
-            foreach (var element in array)
-            {
-                Console.Write(element + ElementDelimiter);
-            }
-            Console.WriteLine();
         }
 
         public static bool IsSorted(this IComparable[] array)
