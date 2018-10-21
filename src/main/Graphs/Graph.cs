@@ -39,12 +39,11 @@ namespace Graphs
 
         private void DepthFirstSearch(string node)
         {
-            var adjacentNodes = this.adjacentNodesMap[node];
-            foreach(var adjacentNode in adjacentNodes)
+            reachableNodes.Add(node);
+            foreach(var adjacentNode in this.adjacentNodesMap[node])
             {
                 if(!reachableNodes.Contains(adjacentNode))
                 {
-                    reachableNodes.Add(adjacentNode);
                     DepthFirstSearch(adjacentNode);
                 }
             }
