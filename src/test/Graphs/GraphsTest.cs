@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Graphs
 {
-    public class  GraphsTest
+    public class GraphsTest
     {
         [Fact]
         public void GraphSaysThereIsAPathFromNodeToNodeWhenThereIsAPath()
