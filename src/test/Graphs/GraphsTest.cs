@@ -8,8 +8,7 @@ namespace Graphs
         [Fact]
         public void GraphSaysThereIsAPathFromNodeToNodeWhenThereIsAPath()
         {
-            var graph = new Graph();
-            graph.AddEdge("1", "2");
+            var graph = new Graph().AddEdge("1", "2");
 
             var hasPath = graph.HasPath("1", "2");
 
@@ -19,8 +18,7 @@ namespace Graphs
         [Fact]
         public void GraphSaysThereIsNoPathFromNodeToNodeWhenThereIsNoPath()
         {
-            var graph = new Graph();
-            graph.AddEdge("1", "2");
+            var graph = new Graph().AddEdge("1", "2");
 
             var hasPath = graph.HasPath("2", "1");
 
