@@ -1,11 +1,10 @@
 using System;
 using System.Linq;
-using Sorting;
 using Xunit;
 
-namespace Test
+namespace Sorting
 {
-    public class SortTest
+    public class SortingTest
     {
         [Fact]
         public void InsertionSortSortsArray()
