@@ -13,29 +13,34 @@ namespace Permutations
             var permutations = new List<IComparable[]>();
             var currentIndex = 0;
 
-            if(permutationLength == array.Length)
+            if(array.Length == permutationLength)
             {
-                permutations.Add(array);
+                permutations.Add(array.Copy());
             }
 
-            while(currentIndex < permutationLength)
+            while(true)
             {
-                if(permutationLength >= 2) 
+                if(permutationLength > 2)
                 {
-                    permutations.AddRange(GeneratePermutations(array, --permutationLength));
+                    permutations.AddRange(GeneratePermutations(array, permutationLength - 1));
+                }
+
+                if(currentIndex >= permutationLength - 1)
+                {
+                    break;
                 }
 
                 if(IsOdd(permutationLength))
                 {
-                    array.Exchange(0, array.LastElementIndex());
+                    array.Exchange(0, permutationLength - 1);
                 }
 
                 if(IsEven(permutationLength))
                 {
-                    array.Exchange(currentIndex, array.LastElementIndex());
+                    array.Exchange(currentIndex, permutationLength - 1);
                 }
 
-                permutations.Add(array.Select(x => x).ToArray());
+                permutations.Add(array.Copy());
                 currentIndex++;
             }
 

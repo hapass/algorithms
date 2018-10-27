@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Sorting
 {
@@ -30,9 +31,9 @@ namespace Sorting
             Debug.Assert(0 <= index && index < array.Length, $"Assertion failed: index {name} is outside the array bounds.");
         }
 
-        public static int LastElementIndex(this IComparable[] array)
+        public static T[] Copy<T>(this T[] array)
         {
-            return array.Length - 1;
+            return array.Select(x => x).ToArray();
         }
 
         public static bool IsSorted(this IComparable[] array)

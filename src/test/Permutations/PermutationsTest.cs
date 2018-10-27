@@ -7,18 +7,25 @@ namespace Permutations
     public class PermutationsTest
     {
         [Fact]
-        public void InsertionSortSortsArray()
+        public void GeneratesPermutationsCorrectly()
         {
-            var elementsCount = 3;
-            var testCollection = Enumerable.Range(0, elementsCount).Select(e => e as IComparable).ToArray();
+            var testCollection = Permutation(0, 1, 2);
 
             var permutations = testCollection.GeneratePermutations();
 
-            foreach(var permutation in permutations)
-            {
-                Console.WriteLine(String.Join(' ', permutation.Select(x => x.ToString())));
-            }
-            Assert.Equal(SimpleFactorial(elementsCount), permutations.Count);
+            Assert.Equal(SimpleFactorial(testCollection.Length), permutations.Count);
+            Assert.Contains(Permutation(0, 1, 2), permutations, new PermutationComparer());
+            Assert.Contains(Permutation(0, 2, 1), permutations, new PermutationComparer());
+            Assert.Contains(Permutation(1, 0, 2), permutations, new PermutationComparer());
+            Assert.Contains(Permutation(1, 2, 0), permutations, new PermutationComparer());
+            Assert.Contains(Permutation(2, 0, 1), permutations, new PermutationComparer());
+            Assert.Contains(Permutation(2, 1, 0), permutations, new PermutationComparer());
+            Assert.Contains(Permutation(0, 1, 2), permutations, new PermutationComparer());
+        }
+
+        private static IComparable[] Permutation(params int[] permutation)
+        {
+            return permutation.Select(x => x as IComparable).ToArray();
         }
 
         private static int SimpleFactorial(int n)
