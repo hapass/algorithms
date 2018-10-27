@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Graphs 
+namespace Graphs
 {
     public class Graph
     {

@@ -30,6 +30,11 @@ namespace Sorting
             Debug.Assert(0 <= index && index < array.Length, $"Assertion failed: index {name} is outside the array bounds.");
         }
 
+        public static int LastElementIndex(this IComparable[] array)
+        {
+            return array.Length - 1;
+        }
+
         public static bool IsSorted(this IComparable[] array)
         {
             const int SecondItemIndex = 1;
