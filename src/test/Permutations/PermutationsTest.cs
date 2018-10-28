@@ -20,7 +20,6 @@ namespace Permutations
             Assert.Contains(Permutation(1, 2, 0), permutations, new PermutationComparer<int>());
             Assert.Contains(Permutation(2, 0, 1), permutations, new PermutationComparer<int>());
             Assert.Contains(Permutation(2, 1, 0), permutations, new PermutationComparer<int>());
-            Assert.Contains(Permutation(0, 1, 2), permutations, new PermutationComparer<int>());
         }
 
         private static T[] Permutation<T>(params T[] permutation)

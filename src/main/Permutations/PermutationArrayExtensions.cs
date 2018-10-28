@@ -47,14 +47,14 @@ namespace Permutations
             return permutations;
         }
 
-        private static bool IsEven(int n)
+        private static bool IsEven(int number)
         {
-            return n % 2 == 0;
+            return number % 2 == 0;
         }
 
-        private static bool IsOdd(int n)
+        private static bool IsOdd(int number)
         {
-            return !IsEven(n);
+            return !IsEven(number);
         }
     }
 }
