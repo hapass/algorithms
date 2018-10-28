@@ -14,18 +14,18 @@ namespace Permutations
             var permutations = testCollection.GeneratePermutations();
 
             Assert.Equal(SimpleFactorial(testCollection.Length), permutations.Count);
-            Assert.Contains(Permutation(0, 1, 2), permutations, new PermutationComparer());
-            Assert.Contains(Permutation(0, 2, 1), permutations, new PermutationComparer());
-            Assert.Contains(Permutation(1, 0, 2), permutations, new PermutationComparer());
-            Assert.Contains(Permutation(1, 2, 0), permutations, new PermutationComparer());
-            Assert.Contains(Permutation(2, 0, 1), permutations, new PermutationComparer());
-            Assert.Contains(Permutation(2, 1, 0), permutations, new PermutationComparer());
-            Assert.Contains(Permutation(0, 1, 2), permutations, new PermutationComparer());
+            Assert.Contains(Permutation(0, 1, 2), permutations, new PermutationComparer<int>());
+            Assert.Contains(Permutation(0, 2, 1), permutations, new PermutationComparer<int>());
+            Assert.Contains(Permutation(1, 0, 2), permutations, new PermutationComparer<int>());
+            Assert.Contains(Permutation(1, 2, 0), permutations, new PermutationComparer<int>());
+            Assert.Contains(Permutation(2, 0, 1), permutations, new PermutationComparer<int>());
+            Assert.Contains(Permutation(2, 1, 0), permutations, new PermutationComparer<int>());
+            Assert.Contains(Permutation(0, 1, 2), permutations, new PermutationComparer<int>());
         }
 
-        private static IComparable[] Permutation(params int[] permutation)
+        private static T[] Permutation<T>(params T[] permutation)
         {
-            return permutation.Select(x => x as IComparable).ToArray();
+            return permutation;
         }
 
         private static int SimpleFactorial(int n)

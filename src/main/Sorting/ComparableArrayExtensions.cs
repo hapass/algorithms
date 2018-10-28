@@ -16,7 +16,7 @@ namespace Sorting
             return item.CompareTo(anotherItem) < 0;
         }
 
-        public static void Exchange(this IComparable[] array, int firstItemIndex, int secondItemIndex)
+        public static void Exchange<T>(this T[] array, int firstItemIndex, int secondItemIndex)
         {
             AssertInsideArray(array, firstItemIndex, nameof(firstItemIndex));
             AssertInsideArray(array, secondItemIndex, nameof(secondItemIndex));
@@ -26,7 +26,7 @@ namespace Sorting
             array[secondItemIndex] = firstItem;
         }
 
-        private static void AssertInsideArray(IComparable[] array, int index, string name)
+        private static void AssertInsideArray<T>(T[] array, int index, string name)
         {
             Debug.Assert(0 <= index && index < array.Length, $"Assertion failed: index {name} is outside the array bounds.");
         }

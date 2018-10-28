@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Permutations
 {
-    class PermutationComparer : IEqualityComparer<IComparable[]>
+    class PermutationComparer<T> : IEqualityComparer<T[]> where T : IComparable
     {
-        public bool Equals(IComparable[] x, IComparable[] y)
+        public bool Equals(T[] x, T[] y)
         {
             if(x.Length != y.Length)
             {
@@ -23,7 +23,7 @@ namespace Permutations
             return true;
         }
 
-        public int GetHashCode(IComparable[] obj)
+        public int GetHashCode(T[] obj)
         {
             return obj.GetHashCode();
         }

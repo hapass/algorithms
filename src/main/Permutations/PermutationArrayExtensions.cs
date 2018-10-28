@@ -7,10 +7,10 @@ namespace Permutations
 {
     public static class PermutationArrayExtensions
     {
-        public static List<IComparable[]> GeneratePermutations(this IComparable[] array, int? length = null)
+        public static List<T[]> GeneratePermutations<T>(this T[] array, int? length = null)
         {
             var permutationLength = length ?? array.Length;
-            var permutations = new List<IComparable[]>();
+            var permutations = new List<T[]>();
             var currentIndex = 0;
 
             if(array.Length == permutationLength)
