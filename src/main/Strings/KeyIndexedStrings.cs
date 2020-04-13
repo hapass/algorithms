@@ -11,13 +11,13 @@ namespace Strings
     public class KeyIndexedStrings
     {
         const int KeyRadix = 10;
-        private KeyValuePair[] keyValuePairs;
-        private int[] keyFrequencyCounts;
+        public KeyValuePair[] keyValuePairs;
+        public int[] keyFrequencyCounts;
 
         public KeyIndexedStrings(params KeyValuePair[] keyValuePairs)
         {
             this.keyValuePairs = keyValuePairs;
-            this.keyFrequencyCounts = new int[10];
+            this.keyFrequencyCounts = new int[KeyRadix];
 
             foreach (var pair in this.keyValuePairs)
             {
@@ -25,6 +25,14 @@ namespace Strings
                 {
                     throw new ArgumentException("Key should be a number between 0 and 9.");
                 }
+            }
+        }
+
+        public void CountKeyFrequencies()
+        {
+            foreach (var pair in this.keyValuePairs)
+            {
+                keyFrequencyCounts[pair.key + 1]++;
             }
         }
     }
