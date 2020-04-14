@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Xunit;
+using Sorting;
 
 namespace Strings
 {
@@ -42,6 +43,18 @@ namespace Strings
             Assert.Equal(8, keyIndexedStrings.GetKeyIndex(3));
             Assert.Equal(14, keyIndexedStrings.GetKeyIndex(4));
             Assert.Equal(20, keyIndexedStrings.GetKeyIndex(5));
+        }
+
+        [Fact]
+        public void ShouldSortKeyIndexedStrings()
+        {
+            var keyIndexedStrings = GetTestData();
+
+            keyIndexedStrings.CountKeyFrequencies();
+            keyIndexedStrings.CountKeyIndices();
+            keyIndexedStrings.Sort();
+
+            Assert.True(keyIndexedStrings.GetSortedKeys().IsSorted());
         }
 
         private KeyIndexedStrings GetTestData()

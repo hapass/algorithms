@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace Strings
 {
@@ -12,12 +13,14 @@ namespace Strings
     {
         const int KeyRadix = 10;
         public KeyValuePair[] keyValuePairs;
+        public KeyValuePair[] sortedKeyValuePairs;
         public int[] keyFrequencyCounts;
         public int[] keyIndices;
 
         public KeyIndexedStrings(params KeyValuePair[] keyValuePairs)
         {
             this.keyValuePairs = keyValuePairs;
+            this.sortedKeyValuePairs = new KeyValuePair[this.keyValuePairs.Length];
             this.keyFrequencyCounts = new int[KeyRadix];
             this.keyIndices = new int[KeyRadix];
 
@@ -56,6 +59,22 @@ namespace Strings
         public int GetKeyIndex(int key)
         {
             return this.keyIndices[key];
+        }
+
+        public void Sort()
+        {
+            foreach (var keyValuePair in this.keyValuePairs)
+            {
+                //insert item to appropriate index
+                this.sortedKeyValuePairs[this.keyIndices[keyValuePair.key]] = keyValuePair;
+                //increment index for other values with same key
+                this.keyIndices[keyValuePair.key]++;
+            }
+        }
+
+        public IComparable[] GetSortedKeys()
+        {
+            return this.sortedKeyValuePairs.Select(p => (IComparable)p.key).ToArray();
         }
     }
 }
