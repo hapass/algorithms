@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 
 namespace Strings
 {
@@ -18,8 +17,7 @@ namespace Strings
 
                 foreach(var ch in str)
                 {
-                    int code = Convert.ToInt32(ch);
-                    if (code < 0 || code > asciiRadix)
+                    if (ch < 0 || ch > asciiRadix)
                     {
                         throw new ArgumentException("String chars should be in ascii code point range.");
                     }
