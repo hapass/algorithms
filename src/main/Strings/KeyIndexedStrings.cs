@@ -26,7 +26,7 @@ namespace Strings
 
             foreach (var pair in this.keyValuePairs)
             {
-                if (pair.key < 0 || pair.key > KeyRadix - 1)
+                if (pair.key < 0 || pair.key >= KeyRadix)
                 {
                     throw new ArgumentException("Key should be a number between 0 and 9.");
                 }
@@ -37,22 +37,23 @@ namespace Strings
         {
             foreach (var pair in this.keyValuePairs)
             {
-                keyFrequencyCounts[pair.key + 1]++;
+                keyFrequencyCounts[pair.key]++;
             }
         }
 
         public int GetKeyFrequency(int key)
         {
-            return this.keyFrequencyCounts[key + 1];
+            return this.keyFrequencyCounts[key];
         }
 
         public void CountKeyIndices()
         {
-            this.keyFrequencyCounts.CopyTo(this.keyIndices, 0);
-
-            for (int key = 0; key < KeyRadix - 1; key++)
+            //key == 0 is always first
+            this.keyIndices[0] = 0;
+            for (int key = 1; key < KeyRadix; key++)
             {
-                this.keyIndices[key + 1] += this.keyIndices[key];
+                //key position = previous key position + previous key count
+                this.keyIndices[key] = this.keyIndices[key - 1] + this.keyFrequencyCounts[key - 1];
             }
         }
 
