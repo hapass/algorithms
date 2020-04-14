@@ -17,7 +17,36 @@ namespace Strings
         [Fact]
         public void ShouldCountKeyFrequencies()
         {
-            var keyIndexedStrings = new KeyIndexedStrings(
+            var keyIndexedStrings = GetTestData();
+
+            keyIndexedStrings.CountKeyFrequencies();
+
+            Assert.Equal(0, keyIndexedStrings.GetKeyFrequency(0));
+            Assert.Equal(3, keyIndexedStrings.GetKeyFrequency(1));
+            Assert.Equal(5, keyIndexedStrings.GetKeyFrequency(2));
+            Assert.Equal(6, keyIndexedStrings.GetKeyFrequency(3));
+            Assert.Equal(6, keyIndexedStrings.GetKeyFrequency(4));
+        }
+
+        [Fact]
+        public void ShouldCountKeyStartingIndexes()
+        {
+            var keyIndexedStrings = GetTestData();
+
+            keyIndexedStrings.CountKeyFrequencies();
+            keyIndexedStrings.CountKeyIndices();
+
+            Assert.Equal(0, keyIndexedStrings.GetKeyIndex(0));
+            Assert.Equal(0, keyIndexedStrings.GetKeyIndex(1));
+            Assert.Equal(3, keyIndexedStrings.GetKeyIndex(2));
+            Assert.Equal(8, keyIndexedStrings.GetKeyIndex(3));
+            Assert.Equal(14, keyIndexedStrings.GetKeyIndex(4));
+            Assert.Equal(20, keyIndexedStrings.GetKeyIndex(5));
+        }
+
+        private KeyIndexedStrings GetTestData()
+        {
+            return new KeyIndexedStrings(
                 new KeyValuePair { key = 2, value = "Anderson" },
                 new KeyValuePair { key = 3, value = "Brown" },
                 new KeyValuePair { key = 3, value = "Davis" },
@@ -39,15 +68,6 @@ namespace Strings
                 new KeyValuePair { key = 3, value = "Williams" },
                 new KeyValuePair { key = 4, value = "Wilson" }
             );
-
-            keyIndexedStrings.CountKeyFrequencies();
-
-            Assert.Equal(0, keyIndexedStrings.keyFrequencyCounts[0]);
-            Assert.Equal(0, keyIndexedStrings.keyFrequencyCounts[1]);
-            Assert.Equal(3, keyIndexedStrings.keyFrequencyCounts[2]);
-            Assert.Equal(5, keyIndexedStrings.keyFrequencyCounts[3]);
-            Assert.Equal(6, keyIndexedStrings.keyFrequencyCounts[4]);
-            Assert.Equal(6, keyIndexedStrings.keyFrequencyCounts[5]);
         }
     }
 }

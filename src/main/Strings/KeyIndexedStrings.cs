@@ -13,11 +13,13 @@ namespace Strings
         const int KeyRadix = 10;
         public KeyValuePair[] keyValuePairs;
         public int[] keyFrequencyCounts;
+        public int[] keyIndices;
 
         public KeyIndexedStrings(params KeyValuePair[] keyValuePairs)
         {
             this.keyValuePairs = keyValuePairs;
             this.keyFrequencyCounts = new int[KeyRadix];
+            this.keyIndices = new int[KeyRadix];
 
             foreach (var pair in this.keyValuePairs)
             {
@@ -34,6 +36,26 @@ namespace Strings
             {
                 keyFrequencyCounts[pair.key + 1]++;
             }
+        }
+
+        public int GetKeyFrequency(int key)
+        {
+            return this.keyFrequencyCounts[key + 1];
+        }
+
+        public void CountKeyIndices()
+        {
+            this.keyFrequencyCounts.CopyTo(this.keyIndices, 0);
+
+            for (int key = 0; key < KeyRadix - 1; key++)
+            {
+                this.keyIndices[key + 1] += this.keyIndices[key];
+            }
+        }
+
+        public int GetKeyIndex(int key)
+        {
+            return this.keyIndices[key];
         }
     }
 }
