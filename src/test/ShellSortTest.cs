@@ -11,7 +11,7 @@ namespace Algorithms
         public void InsertionSortSortsArray()
         {
             var testCollection = GetTestCharArray();
-            var algorithm = new InsertionSort();
+            var algorithm = new ShellSort();
             algorithm.Sort(testCollection);
             Assert.True(testCollection.IsSorted());
         }

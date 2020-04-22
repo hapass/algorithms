@@ -10,14 +10,12 @@ I am trying to practice basic algorithms in this repository.
 Implement:
 
 1. Bubble sort.
-1. Insertion sort.
 1. Shell sort.
 1. Merge sort.
 1. Quick sort.
 1. Binary heap.
 1. Red black tree.
-1. Open hash table.
-1. Closed hash table.
+1. Hash table.
 1. Depth first search.
 1. Breadth first search.
 1. Topological sort.
