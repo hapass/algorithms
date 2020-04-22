@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace Algorithms
 {
@@ -11,6 +12,14 @@ namespace Algorithms
 
         public void SortInternal(IComparable[] array, int from, int to)
         {
+            StringBuilder builder = new StringBuilder();
+            foreach (Object item in array)
+            {
+                builder.Append(item.ToString());
+                builder.Append(",");
+            }
+            Console.WriteLine(builder.ToString());
+
             if (from == to)
             {
                 return;
@@ -18,8 +27,8 @@ namespace Algorithms
 
             int pivot = 0;
 
-            int i = 0;
-            int j = array.Length - 1;
+            int i = from;
+            int j = to;
 
             while (array[i].CompareTo(array[pivot]) < 0)
             {

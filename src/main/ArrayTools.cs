@@ -19,7 +19,7 @@ namespace Tools
                 var currentItem = index;
                 var previousItem = index - 1;
 
-                if (currentItem.CompareTo(previousItem) < 0)
+                if (array[currentItem].CompareTo(array[previousItem]) < 0)
                     return false;
             }
 
