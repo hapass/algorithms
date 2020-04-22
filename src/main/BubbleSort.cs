@@ -7,10 +7,11 @@ namespace Algorithms
         public void Sort(IComparable[] array)
         {
             bool isAnySwapped;
+            int n = array.Length - 1;
             do
             {
                 isAnySwapped = false;
-                for (int j = 0; j < array.Length - 1; j++)
+                for (int j = 0; j < n; j++)
                 {
                     if (array[j].CompareTo(array[j + 1]) > 0)
                     {
@@ -20,6 +21,7 @@ namespace Algorithms
                         isAnySwapped = true;
                     }
                 }
+                n--;
             } while (isAnySwapped);
         }
     }

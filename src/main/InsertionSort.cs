@@ -6,18 +6,13 @@ namespace Sorting
     {
         public void Sort(IComparable[] array)
         {
-            // const int secondElementIndex = 1;
-            // for (var index = secondElementIndex; index < array.Length; index++)
-            // {
-            //     var currentElementIndex = index;
-            //     var previousElementIndex = currentElementIndex - 1;
-            //     while (previousElementIndex >= 0 && array[currentElementIndex].CompareTo(array[previousElementIndex]) < 0)
-            //     {
-            //         array.Exchange(currentElementIndex, previousElementIndex);
-            //         currentElementIndex--;
-            //         previousElementIndex--;
-            //     }
-            // }
+            for (int i = 1; i < array.Length; i++)
+            {
+                for (int j = i; j > 0; j--)
+                {
+                    
+                }
+            }
         }
     }
 }
