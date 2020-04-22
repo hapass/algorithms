@@ -5,13 +5,13 @@ using Tools;
 
 namespace Algorithms
 {
-    public class BubbleSortTest
+    public class InsertionSortTest
     {
         [Fact]
-        public void BubbleSortSortsArray()
+        public void InsertionSortSortsArray()
         {
             var testCollection = GetTestCharArray();
-            var algorithm = new BubbleSort();
+            var algorithm = new InsertionSort();
             algorithm.Sort(testCollection);
             Assert.True(testCollection.IsSorted());
         }
