@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 
-namespace Sorting
+namespace Tools
 {
     public static class ArrayTools
     {
