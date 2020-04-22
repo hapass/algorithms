@@ -27,3 +27,5 @@ Implement:
 1. Knuth-Morris-Pratt.
 1. Boyer-Moore.
 1. Rabin-Karp.
+1. Generate all permutations.
+1. Fischer-Yates shuffle.

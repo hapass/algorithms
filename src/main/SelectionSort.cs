@@ -10,7 +10,7 @@ namespace Sorting
             var lastIndex = array.Length - 1;
             for (var index = FirstIndex; index < lastIndex; index++)
             {
-                array.Exchange(index, FindMinInInterval(array, index, lastIndex));
+                //array.Exchange(index, FindMinInInterval(array, index, lastIndex));
             }
         }
 
@@ -22,7 +22,7 @@ namespace Sorting
             {
                 var currentValue = array[index];
                 var currentMinValue = array[minValueIndex];
-                if (currentValue.IsLessThan(currentMinValue))
+                if (currentValue.CompareTo(currentMinValue) < 0)
                 {
                     minValueIndex = index;
                 }

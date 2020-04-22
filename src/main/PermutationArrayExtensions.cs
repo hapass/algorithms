@@ -32,12 +32,12 @@ namespace Permutations
 
                 if(IsOdd(permutationLength))
                 {
-                    array.Exchange(0, permutationLength - 1);
+                    //array.Exchange(0, permutationLength - 1);
                 }
 
                 if(IsEven(permutationLength))
                 {
-                    array.Exchange(currentIndex, permutationLength - 1);
+                    //array.Exchange(currentIndex, permutationLength - 1);
                 }
 
                 permutations.Add(array.Copy());

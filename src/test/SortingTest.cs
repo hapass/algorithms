@@ -10,8 +10,9 @@ namespace Sorting
         public void InsertionSortSortsArray()
         {
             var testCollection = GetTestCharArray();
+            var sort = new InsertionSort();
 
-            testCollection.Sort(new InsertionSort());
+            sort.Sort(testCollection);
 
             Assert.True(testCollection.IsSorted());
         }
@@ -20,8 +21,8 @@ namespace Sorting
         public void SelectionSortSortsArray()
         {
             var testCollection = GetTestCharArray();
-
-            testCollection.Sort(new SelectionSort());
+            var sort = new SelectionSort();
+            sort.Sort(testCollection);
 
             Assert.True(testCollection.IsSorted());
         }
@@ -30,8 +31,8 @@ namespace Sorting
         public void ShellSortSortsArray()
         {
             var testCollection = GetTestCharArray();
-
-            testCollection.Sort(new ShellSort());
+            var sort = new ShellSort();
+            sort.Sort(testCollection);
 
             Assert.True(testCollection.IsSorted());
         }

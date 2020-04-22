@@ -2,7 +2,7 @@
 
 namespace Sorting
 {
-    public class ShellSort : ISortStrategy
+    public class ShellSort
     {
         public enum Sequence
         {
@@ -29,9 +29,9 @@ namespace Sorting
                 {
                     var currentElementIndex = index;
                     var previousElementIndex = currentElementIndex - interval;
-                    while (previousElementIndex >= 0 && array[currentElementIndex].IsLessThan(array[previousElementIndex]))
+                    while (previousElementIndex >= 0 && array[currentElementIndex].CompareTo(array[previousElementIndex]) < 0)
                     {
-                        array.Exchange(currentElementIndex, previousElementIndex);
+                        //array.Exchange(currentElementIndex, previousElementIndex);
                         currentElementIndex -= interval;
                         previousElementIndex -= interval;
                     }
