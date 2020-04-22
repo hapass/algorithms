@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Sorting
 {
-    public static class ComparableArrayExtensions
+    public static class ArrayTools
     {
         public static T[] Copy<T>(this T[] array)
         {
@@ -18,7 +18,7 @@ namespace Sorting
             {
                 var currentItem = index;
                 var previousItem = index - 1;
-                
+
                 if (currentItem.CompareTo(previousItem) < 0)
                     return false;
             }
