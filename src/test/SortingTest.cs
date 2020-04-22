@@ -19,16 +19,6 @@
 //         }
 
 //         [Fact]
-//         public void SelectionSortSortsArray()
-//         {
-//             var testCollection = GetTestCharArray();
-//             var sort = new SelectionSort();
-//             sort.Sort(testCollection);
-
-//             Assert.True(testCollection.IsSorted());
-//         }
-
-//         [Fact]
 //         public void ShellSortSortsArray()
 //         {
 //             var testCollection = GetTestCharArray();
