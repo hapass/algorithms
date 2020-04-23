@@ -14,6 +14,7 @@ Implement:
 1. Merge sort.
 1. Quick sort.
 1. Binary heap.
+1. AVL tree.
 1. Red black tree.
 1. Hash table.
 1. Depth first search.

@@ -19,9 +19,6 @@ namespace Algorithms
                 heap = resizedHeap;
             }
 
-            Console.WriteLine("Element index: " + (elementCount - 1));
-            Console.WriteLine("Element count: " + elementCount);
-            Console.WriteLine("Heap size: " + heap.Length);
             heap[elementCount - 1] = item;
             Swim(elementCount - 1);
         }
