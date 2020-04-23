@@ -4,10 +4,10 @@ using Xunit;
 
 namespace Algorithms
 {
-    public class InsertionSortTest
+    public class ShellSortTest
     {
         [Fact]
-        public void InsertionSortSortsArray()
+        public void ShellSortSortsArray()
         {
             var testCollection = TestUtils.GetUnsortedCharArray();
             var algorithm = new ShellSort();
