@@ -25,6 +25,7 @@ namespace Algorithms
             }
 
             Assert.True(TestUtils.IsSorted(result));
+            Assert.True(TestUtils.AreEqual(testCollection, result));
         }
     }
 }

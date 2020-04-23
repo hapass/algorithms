@@ -54,11 +54,7 @@ namespace Algorithms
 
             IComparable poppedItem = heap[0];
 
-            for (int i = 1; i < elementCount; i++)
-            {
-                heap[i - 1] = heap[i];
-            }
-
+            heap[0] = heap[elementCount - 1];
             heap[elementCount - 1] = null;
             elementCount--;
 
@@ -69,23 +65,44 @@ namespace Algorithms
 
         private void Sink(int elementIndex)
         {
-            int leftElementIndex = elementIndex + 1;
-            int rightElementIndex = elementIndex + 2;
+            int leftElementIndex = 2 * elementIndex + 1;
+            int rightElementIndex = 2 * elementIndex + 2;
 
-            if (leftElementIndex < elementCount && heap[elementIndex].CompareTo(heap[leftElementIndex]) > 0)
+            if (leftElementIndex >= elementCount)
             {
-                IComparable tempElement = heap[elementIndex];
-                heap[elementIndex] = heap[leftElementIndex];
-                heap[leftElementIndex] = heap[elementIndex];
-                Sink(leftElementIndex);
+                return;
             }
 
-            if (rightElementIndex < elementCount && heap[elementIndex].CompareTo(heap[rightElementIndex]) > 0)
+            if (rightElementIndex >= elementCount)
             {
-                IComparable tempElement = heap[elementIndex];
-                heap[elementIndex] = heap[rightElementIndex];
-                heap[rightElementIndex] = heap[elementIndex];
-                Sink(rightElementIndex);
+                if (heap[elementIndex].CompareTo(heap[leftElementIndex]) > 0)
+                {
+                    IComparable tempElement = heap[elementIndex];
+                    heap[elementIndex] = heap[leftElementIndex];
+                    heap[leftElementIndex] = tempElement;
+                }
+                return;
+            }
+
+            if (heap[leftElementIndex].CompareTo(heap[rightElementIndex]) <= 0)
+            {
+                if (heap[elementIndex].CompareTo(heap[leftElementIndex]) > 0)
+                {
+                    IComparable tempElement = heap[elementIndex];
+                    heap[elementIndex] = heap[leftElementIndex];
+                    heap[leftElementIndex] = tempElement;
+                    Sink(leftElementIndex);
+                }
+            }
+            else
+            {
+                if (heap[elementIndex].CompareTo(heap[rightElementIndex]) > 0)
+                {
+                    IComparable tempElement = heap[elementIndex];
+                    heap[elementIndex] = heap[rightElementIndex];
+                    heap[rightElementIndex] = tempElement;
+                    Sink(rightElementIndex);
+                }
             }
         }
     }

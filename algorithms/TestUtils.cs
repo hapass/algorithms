@@ -20,6 +20,27 @@ namespace Algorithms
             return true;
         }
 
+        public static bool AreEqual(IComparable[] first, IComparable[] second)
+        {
+            if (first.Length != second.Length)
+            {
+                return false;
+            }
+
+            Array.Sort(first);
+            Array.Sort(second);
+
+            for (int i = 0; i < first.Length; i++)
+            {
+                if (first[i] != second[i])
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public static IComparable[] GetUnsortedCharArray()
         {
             return "QUITEEXCELLENTSORTTESTWITHOUTREPEATINGLETTERS"
