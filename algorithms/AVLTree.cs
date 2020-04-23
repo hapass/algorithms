@@ -217,14 +217,33 @@ namespace Algorithms
             throw new NotImplementedException();
         }
 
-        public string[] Sort()
+        public List<string> Sort()
         {
             throw new NotImplementedException();
         }
 
-        public void Print()
+        public List<string> Print()
         {
-            throw new NotImplementedException();
+            List<string> result = new List<string>();
+            Queue<Node> q = new Queue<Node>();
+            q.Enqueue(treeRoot);
+            while (q.Count > 0)
+            {
+                Node node = q.Dequeue();
+                result.Add(node.Value);
+
+                if (node.Left.Height != -1)
+                {
+                    q.Enqueue(node.Left);
+                }
+
+                if (node.Right.Height != -1)
+                {
+                    q.Enqueue(node.Right);
+                }
+            }
+
+            return result;
         }
     }
 }
