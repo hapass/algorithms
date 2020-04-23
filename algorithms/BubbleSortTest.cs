@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using Xunit;
-using Tools;
 
 namespace Algorithms
 {
@@ -10,10 +9,10 @@ namespace Algorithms
         [Fact]
         public void BubbleSortSortsArray()
         {
-            var testCollection = TestData.GetUnsortedCharArray();
+            var testCollection = TestUtils.GetUnsortedCharArray();
             var algorithm = new BubbleSort();
             algorithm.Sort(testCollection);
-            Assert.True(testCollection.IsSorted());
+            Assert.True(TestUtils.IsSorted(testCollection));
         }
     }
 }

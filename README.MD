@@ -5,7 +5,7 @@
 I am trying to practice basic algorithms in this repository.
 
 1. Download and install [dotnet](https://dotnet.microsoft.com/download)
-1. Run command *run.sh*
+1. Run script *test.sh*
 
 Implement:
 

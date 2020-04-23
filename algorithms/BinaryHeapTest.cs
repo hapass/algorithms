@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using Xunit;
-using Tools;
 
 namespace Algorithms
 {
@@ -10,7 +9,7 @@ namespace Algorithms
         [Fact]
         public void BinaryHeapSortsArray()
         {
-            var testCollection = TestData.GetUnsortedCharArray();
+            var testCollection = TestUtils.GetUnsortedCharArray();
             var heap = new BinaryHeap();
 
             for (int i = 0; i < testCollection.Length; i++)
@@ -25,7 +24,7 @@ namespace Algorithms
                 Console.WriteLine(result[i]);
             }
 
-            Assert.True(result.IsSorted());
+            Assert.True(TestUtils.IsSorted(result));
         }
     }
 }
