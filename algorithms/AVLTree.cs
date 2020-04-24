@@ -5,15 +5,42 @@ namespace Algorithms
 {
     public class Node
     {
-        public int Height = -1;
+        public int Height {
+            get {
+                if (height != -1)
+                {
+                    return height;
+                }
+
+                if (Left == null || Right == null)
+                {
+                    return -1;
+                }
+
+                if (Left.Height > Right.Height)
+                {
+                    return Left.Height + 1;
+                }
+
+                return Right.Height + 1;
+            }
+        }
+
         public int Key = 0;
         public Node Left = null;
         public Node Right = null;
         public Node Parent = null;
 
+        private int height = -1;
+
         public Node(Node parent = null)
         {
             this.Parent = parent;
+        }
+
+        public Node(int height)
+        {
+            this.height = height;
         }
     }
 
@@ -55,7 +82,6 @@ namespace Algorithms
             }
 
             //add node
-            node.Height = 0;
             node.Key = key;
             node.Left = new Node(node);
             node.Right = new Node(node);
@@ -73,48 +99,35 @@ namespace Algorithms
                         and thus Left.Left exists. Same thing with Right.Height and Right.Right node.
                     */
 
-                    //left heavy straight
                     if (parentNode.Left.Height > parentNode.Right.Height &&
                         parentNode.Left.Left.Height > parentNode.Left.Right.Height)
                     {
-                        Console.WriteLine("left heavy straight");
+                        Console.WriteLine("rotate - right");
                         RotateRight(parentNode);
                     }
 
-                    //left heavy zig-zag
                     if (parentNode.Left.Height > parentNode.Right.Height &&
                         parentNode.Left.Right.Height > parentNode.Left.Left.Height)
                     {
-                        Console.WriteLine("left heavy zig-zag");
+                        Console.WriteLine("rotate - left - right");
                         RotateLeft(parentNode.Left);
                         RotateRight(parentNode);
                     }
 
-                    //right heavy straight
                     if (parentNode.Right.Height > parentNode.Left.Height &&
                         parentNode.Right.Right.Height > parentNode.Right.Left.Height)
                     {
-                        Console.WriteLine("right heavy straight");
+                        Console.WriteLine("rotate - left");
                         RotateLeft(parentNode);
                     }
 
-                    //right heavy zig-zag
                     if (parentNode.Right.Height > parentNode.Left.Height &&
                         parentNode.Right.Left.Height > parentNode.Right.Right.Height)
                     {
-                        Console.WriteLine("right heavy zig-zag");
+                        Console.WriteLine("rotate - right - left");
                         RotateRight(parentNode.Right);
                         RotateLeft(parentNode);
                     }
-                }
-
-                if (parentNode.Left.Height > parentNode.Right.Height)
-                {
-                    parentNode.Height = parentNode.Left.Height + 1;
-                }
-                else
-                {
-                    parentNode.Height = parentNode.Right.Height + 1;
                 }
 
                 parentNode = parentNode.Parent;
