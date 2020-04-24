@@ -47,17 +47,29 @@ namespace Algorithms
             };
 
             var avlTree = new AVLTree();
+
+            //initial left rotate
             avlTree.Add(10);
             avlTree.Add(20);
             avlTree.Add(30);
+
+            //left rotate on subtree
             avlTree.Add(40);
             avlTree.Add(50);
+
+            //right rotate
             avlTree.Add(5);
             avlTree.Add(1);
+
+            //left, right rotate
             avlTree.Add(25);
             avlTree.Add(27);
+
+            //right, left rotate
             avlTree.Add(70);
             avlTree.Add(60);
+
+            //parent rotations
             avlTree.Add(80);
 
             Assert.True(TestUtils.AreEqual(avlTree.GetRoot(), referenceTree));
