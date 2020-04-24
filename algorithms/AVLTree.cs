@@ -233,33 +233,39 @@ namespace Algorithms
                 return false;
             }
 
-            if (node.Parent == null)
-            {
-                //do something!
-            }
-
             if (node.Left.Height == -1 && node.Right.Height == -1)
             {
-                //remove node
+                node.Key = 0;
+                node.Value = null;
+                node.Left = null;
+                node.Right = null;
             }
 
             if (node.Left.Height == -1 && node.Right.Height != -1)
             {
-                //exchange with right
+                node.Key = node.Right.Key;
+                node.Value = node.Right.Value;
+                node.Left = node.Right.Left;
+                node.Right = node.Right.Right;
             }
 
             if (node.Right.Height == -1 && node.Left.Height != -1)
             {
-                //exchange with left
+                node.Key = node.Left.Key;
+                node.Value = node.Left.Value;
+                node.Left = node.Left.Left;
+                node.Right = node.Left.Right;
             }
 
             if (node.Right.Height != -1 && node.Left.Height != -1)
             {
-                //find min for node.Right
-                //replace with min
+                Node successor = FindMin(node.Right);
+                Delete(successor.Key);
+                node.Key = successor.Key;
+                node.Value = successor.Value;
             }
 
-            //rebalance tree starting from parent
+            Rebalance(node);
 
             return true;
         }
