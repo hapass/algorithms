@@ -10,19 +10,19 @@ namespace Algorithms
         public void AVLTreeIsBuiltProperly()
         {
             Node referenceTree = new Node(0) {
-                Key = 20,
+                Key = 40,
                 Left = new Node(0) {
-                    Key = 5,
+                    Key = 20,
                     Left = new Node(0) {
-                        Key = 1
+                        Key = 5,
+                        Left = new Node(0) {
+                            Key = 1
+                        },
+                        Right = new Node(0) {
+                            Key = 10
+                        }
                     },
                     Right = new Node(0) {
-                        Key = 10
-                    }
-                },
-                Right = new Node(0) {
-                    Key = 40,
-                    Left = new Node(0) {
                         Key = 27,
                         Left = new Node(0) {
                             Key = 25
@@ -30,14 +30,17 @@ namespace Algorithms
                         Right = new Node(0) {
                             Key = 30
                         }
+                    }
+                },
+                Right = new Node(0) {
+                    Key = 60,
+                    Left = new Node(0) {
+                        Key = 50
                     },
                     Right = new Node(0) {
-                        Key = 60,
-                        Left = new Node(0) {
-                            Key = 50
-                        },
+                        Key = 70,
                         Right = new Node(0) {
-                            Key = 70
+                            Key = 80
                         }
                     }
                 }
@@ -55,6 +58,7 @@ namespace Algorithms
             avlTree.Add(27);
             avlTree.Add(70);
             avlTree.Add(60);
+            avlTree.Add(80);
 
             Assert.True(TestUtils.AreEqual(avlTree.GetRoot(), referenceTree));
         }
