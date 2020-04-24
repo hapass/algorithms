@@ -94,7 +94,7 @@ namespace Algorithms
 
         private void Rebalance(Node subtreeRoot)
         {
-            if (subtreeRoot == null) 
+            if (subtreeRoot == null || subtreeRoot.Height == -1) 
             {
                 return;
             }
@@ -240,24 +240,21 @@ namespace Algorithms
                 node.Left = null;
                 node.Right = null;
             }
-
-            if (node.Left.Height == -1 && node.Right.Height != -1)
+            else if (node.Left.Height == -1 && node.Right.Height != -1)
             {
                 node.Key = node.Right.Key;
                 node.Value = node.Right.Value;
                 node.Left = node.Right.Left;
                 node.Right = node.Right.Right;
             }
-
-            if (node.Right.Height == -1 && node.Left.Height != -1)
+            else if (node.Right.Height == -1 && node.Left.Height != -1)
             {
                 node.Key = node.Left.Key;
                 node.Value = node.Left.Value;
                 node.Left = node.Left.Left;
                 node.Right = node.Left.Right;
             }
-
-            if (node.Right.Height != -1 && node.Left.Height != -1)
+            else if (node.Right.Height != -1 && node.Left.Height != -1)
             {
                 Node successor = FindMin(node.Right);
                 Delete(successor.Key);
