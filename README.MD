@@ -17,9 +17,9 @@ Implement:
 1. AVL tree.
 1. Red black tree.
 1. Hash table.
-1. Depth first search.
-1. Breadth first search.
 1. Topological sort.
+1. Connected components in a graph.
+1. Minimal spanning trees.
 1. A*.
 1. 3-way string quicksort.
 1. Trie.

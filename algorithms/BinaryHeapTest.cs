@@ -21,7 +21,6 @@ namespace Algorithms
             for (int i = 0; i < testCollection.Length; i++)
             {
                 result[i] = heap.Pop();
-                Console.WriteLine(result[i]);
             }
 
             Assert.True(TestUtils.IsSorted(result));

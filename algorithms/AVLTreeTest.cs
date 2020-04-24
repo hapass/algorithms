@@ -7,43 +7,105 @@ namespace Algorithms
     public class AVLTreeTest
     {
         [Fact]
-        public void AVLTreeFindsValueArray()
+        public void AVLTreePerformsLeftStraightTurn()
         {
-            var tree = new AVLTree();
+            Node referenceTree = new Node() {
+                Key = 20,
+                Height = 0,
+                Left = new Node() {
+                    Key = 10,
+                    Height = 0
+                },
+                Right = new Node {
+                    Key = 30,
+                    Height = 0
+                }
+            };
 
-            tree.Add(1, "One");
-            tree.Add(2, "Two");
-            tree.Add(3, "Three");
-            tree.Add(4, "Four");
-            tree.Add(5, "Five");
-            tree.Add(6, "Six");
-            tree.Add(7, "Seven");
-            tree.Add(8, "Eight");
-            tree.Add(9, "Nine");
+            var avlTree = new AVLTree();
+            avlTree.Add(10);
+            avlTree.Add(20);
+            avlTree.Add(30);
 
-            Assert.True(tree.Find(10) == null);
-            Assert.True(tree.Find(6) != null);
-            Assert.True(tree.Find(6).Value == "Six");
+            Assert.True(TestUtils.AreEqual(avlTree.GetRoot(), referenceTree));
         }
 
         [Fact]
-        public void AVLTreeIsBuiltAsExpected()
+        public void AVLTreePerformsTurnOnSubtree()
         {
-            var tree = new AVLTree();
+            Node referenceTree = new Node() {
+                Key = 20,
+                Height = 0,
+                Left = new Node {
+                    Key = 10,
+                    Height = 0
+                },
+                Right = new Node {
+                    Key = 40,
+                    Height = 0,
+                    Left = new Node {
+                        Key = 30,
+                        Height = 0
+                    },
+                    Right = new Node {
+                        Key = 50,
+                        Height = 0
+                    }
+                }
+            };
 
-            tree.Add(1, "One");
-            tree.Add(2, "Two");
-            tree.Add(3, "Three");
-            tree.Add(4, "Four");
-            tree.Add(5, "Five");
-            tree.Add(6, "Six");
-            tree.Add(7, "Seven");
-            tree.Add(8, "Eight");
-            tree.Add(9, "Nine");
+            var avlTree = new AVLTree();
+            avlTree.Add(10);
+            avlTree.Add(20);
+            avlTree.Add(30);
+            avlTree.Add(40);
+            avlTree.Add(50);
 
-            var result = tree.Print();
-            string[] reference = new string[] { "Four", "Two", "Six", "One", "Three", "Five", "Eight", "Seven", "Nine" };
-            Assert.True(TestUtils.AreEqual(result.Select(x => (IComparable) x).ToArray(), reference));
+            Assert.True(TestUtils.AreEqual(avlTree.GetRoot(), referenceTree));
+        }
+
+        [Fact]
+        public void AVLTreePerformsRightStraightTurn()
+        {
+            Node referenceTree = new Node() {
+                Key = 20,
+                Height = 0,
+                Left = new Node {
+                    Key = 5,
+                    Height = 0,
+                    Left = new Node {
+                        Key = 1,
+                        Height = 0
+                    },
+                    Right = new Node {
+                        Key = 10,
+                        Height = 0
+                    }
+                },
+                Right = new Node {
+                    Key = 40,
+                    Height = 0,
+                    Left = new Node {
+                        Key = 30,
+                        Height = 0
+                    },
+                    Right = new Node {
+                        Key = 50,
+                        Height = 0
+                    }
+                }
+            };
+
+            var avlTree = new AVLTree();
+            avlTree.Add(10);
+            avlTree.Add(20);
+            avlTree.Add(30);
+            avlTree.Add(40);
+            avlTree.Add(50);
+            avlTree.Add(5);
+            avlTree.Add(1);
+
+            Assert.True(TestUtils.AreEqual(avlTree.GetRoot(), referenceTree));
         }
     }
 }

@@ -41,6 +41,23 @@ namespace Algorithms
             return true;
         }
 
+        public static bool AreEqual(Node firstTreeRoot, Node secondTreeRoot)
+        {
+            if (firstTreeRoot == null || firstTreeRoot.Height == -1)
+            {
+                return secondTreeRoot == null || secondTreeRoot.Height == -1;
+            }
+
+            if (secondTreeRoot == null || secondTreeRoot.Height == -1)
+            {
+                return false;
+            }
+
+            return firstTreeRoot.Key == secondTreeRoot.Key && 
+                AreEqual(firstTreeRoot.Left, secondTreeRoot.Left) &&
+                AreEqual(firstTreeRoot.Right, secondTreeRoot.Right);
+        }
+
         public static IComparable[] GetUnsortedCharArray()
         {
             return "QUITEEXCELLENTSORTTESTWITHOUTREPEATINGLETTERS"

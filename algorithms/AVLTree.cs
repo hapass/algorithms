@@ -7,7 +7,6 @@ namespace Algorithms
     {
         public int Height = -1;
         public int Key = 0;
-        public String Value = String.Empty;
         public Node Left = null;
         public Node Right = null;
         public Node Parent = null;
@@ -22,7 +21,12 @@ namespace Algorithms
     {
         private Node treeRoot = new Node();
 
-        public bool Add(int key, string value)
+        public Node GetRoot()
+        {
+            return treeRoot;
+        }
+
+        public bool Add(int key)
         {
             Node subtreeRoot = treeRoot;
             Node node = null;
@@ -53,7 +57,6 @@ namespace Algorithms
             //add node
             node.Height = 0;
             node.Key = key;
-            node.Value = value;
             node.Left = new Node(node);
             node.Right = new Node(node);
 
@@ -74,6 +77,7 @@ namespace Algorithms
                     if (parentNode.Left.Height > parentNode.Right.Height &&
                         parentNode.Left.Left.Height > parentNode.Left.Right.Height)
                     {
+                        Console.WriteLine("left heavy straight");
                         RotateRight(parentNode);
                     }
 
@@ -81,6 +85,7 @@ namespace Algorithms
                     if (parentNode.Left.Height > parentNode.Right.Height &&
                         parentNode.Left.Right.Height > parentNode.Left.Left.Height)
                     {
+                        Console.WriteLine("left heavy zig-zag");
                         RotateLeft(parentNode.Left);
                         RotateRight(parentNode);
                     }
@@ -89,6 +94,7 @@ namespace Algorithms
                     if (parentNode.Right.Height > parentNode.Left.Height &&
                         parentNode.Right.Right.Height > parentNode.Right.Left.Height)
                     {
+                        Console.WriteLine("right heavy straight");
                         RotateLeft(parentNode);
                     }
 
@@ -96,6 +102,7 @@ namespace Algorithms
                     if (parentNode.Right.Height > parentNode.Left.Height &&
                         parentNode.Right.Left.Height > parentNode.Right.Right.Height)
                     {
+                        Console.WriteLine("right heavy zig-zag");
                         RotateRight(parentNode.Right);
                         RotateLeft(parentNode);
                     }
@@ -132,6 +139,7 @@ namespace Algorithms
             }
 
             node.Left.Parent = node.Parent;
+            node.Parent = node.Left;
 
             Node nodeLeftRight = node.Left.Right;
             node.Left.Right = node;
@@ -154,30 +162,11 @@ namespace Algorithms
             }
 
             node.Right.Parent = node.Parent;
+            node.Parent = node.Right;
 
             Node nodeRightLeft = node.Right.Left;
             node.Right.Left = node;
             node.Right = nodeRightLeft;
-        }
-
-        private Node FindParent(int key, Node subtreeRoot)
-        {
-            if (subtreeRoot.Height == -1)
-            {
-                return subtreeRoot;
-            }
-
-            if (key < subtreeRoot.Key)
-            {
-                return FindParent(key, subtreeRoot.Left);
-            }
-
-            if (key > subtreeRoot.Key)
-            {
-                return FindParent(key, subtreeRoot.Right);
-            }
-
-            return null;
         }
 
         public Node Find(int key)
@@ -220,30 +209,6 @@ namespace Algorithms
         public List<string> Sort()
         {
             throw new NotImplementedException();
-        }
-
-        public List<string> Print()
-        {
-            List<string> result = new List<string>();
-            Queue<Node> q = new Queue<Node>();
-            q.Enqueue(treeRoot);
-            while (q.Count > 0)
-            {
-                Node node = q.Dequeue();
-                result.Add(node.Value);
-
-                if (node.Left.Height != -1)
-                {
-                    q.Enqueue(node.Left);
-                }
-
-                if (node.Right.Height != -1)
-                {
-                    q.Enqueue(node.Right);
-                }
-            }
-
-            return result;
         }
     }
 }
