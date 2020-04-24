@@ -27,6 +27,7 @@ namespace Algorithms
         }
 
         public int Key = 0;
+        public string Value = null;
         public Node Left = null;
         public Node Right = null;
         public Node Parent = null;
@@ -53,7 +54,7 @@ namespace Algorithms
             return treeRoot;
         }
 
-        public bool Add(int key)
+        public bool Add(int key, string value = null)
         {
             Node subtreeRoot = treeRoot;
             Node node = null;
@@ -83,6 +84,7 @@ namespace Algorithms
 
             //add node
             node.Key = key;
+            node.Value = value;
             node.Left = new Node(node);
             node.Right = new Node(node);
 
