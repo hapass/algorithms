@@ -88,54 +88,59 @@ namespace Algorithms
             node.Left = new Node(node);
             node.Right = new Node(node);
 
-            Node parentNode = node.Parent;
-            while (parentNode != null)
+            Rebalance(node.Parent);
+            return true;
+        }
+
+        private void Rebalance(Node subtreeRoot)
+        {
+            if (subtreeRoot == null) 
             {
-                int heightDifference = Math.Abs(parentNode.Left.Height - parentNode.Right.Height);
-
-                if (heightDifference > 1)
-                {
-                    /*
-                        Comparisons below should work,
-                        because if Left.Height is greater than any height it cannot be -1,
-                        and thus Left.Left exists. Same thing with Right.Height and Right.Right node.
-                    */
-
-                    if (parentNode.Left.Height > parentNode.Right.Height &&
-                        parentNode.Left.Left.Height > parentNode.Left.Right.Height)
-                    {
-                        Console.WriteLine("rotate - right");
-                        RotateRight(parentNode);
-                    }
-
-                    if (parentNode.Left.Height > parentNode.Right.Height &&
-                        parentNode.Left.Right.Height > parentNode.Left.Left.Height)
-                    {
-                        Console.WriteLine("rotate - left - right");
-                        RotateLeft(parentNode.Left);
-                        RotateRight(parentNode);
-                    }
-
-                    if (parentNode.Right.Height > parentNode.Left.Height &&
-                        parentNode.Right.Right.Height > parentNode.Right.Left.Height)
-                    {
-                        Console.WriteLine("rotate - left");
-                        RotateLeft(parentNode);
-                    }
-
-                    if (parentNode.Right.Height > parentNode.Left.Height &&
-                        parentNode.Right.Left.Height > parentNode.Right.Right.Height)
-                    {
-                        Console.WriteLine("rotate - right - left");
-                        RotateRight(parentNode.Right);
-                        RotateLeft(parentNode);
-                    }
-                }
-
-                parentNode = parentNode.Parent;
+                return;
             }
 
-            return true;
+            int heightDifference = Math.Abs(subtreeRoot.Left.Height - subtreeRoot.Right.Height);
+
+            if (heightDifference > 1)
+            {
+                /*
+                    Comparisons below should work,
+                    because if Left.Height is greater than any height it cannot be -1,
+                    and thus Left.Left exists. Same thing with Right.Height and Right.Right node.
+                */
+
+                if (subtreeRoot.Left.Height > subtreeRoot.Right.Height &&
+                    subtreeRoot.Left.Left.Height > subtreeRoot.Left.Right.Height)
+                {
+                    Console.WriteLine("rotate - right");
+                    RotateRight(subtreeRoot);
+                }
+
+                if (subtreeRoot.Left.Height > subtreeRoot.Right.Height &&
+                    subtreeRoot.Left.Right.Height > subtreeRoot.Left.Left.Height)
+                {
+                    Console.WriteLine("rotate - left - right");
+                    RotateLeft(subtreeRoot.Left);
+                    RotateRight(subtreeRoot);
+                }
+
+                if (subtreeRoot.Right.Height > subtreeRoot.Left.Height &&
+                    subtreeRoot.Right.Right.Height > subtreeRoot.Right.Left.Height)
+                {
+                    Console.WriteLine("rotate - left");
+                    RotateLeft(subtreeRoot);
+                }
+
+                if (subtreeRoot.Right.Height > subtreeRoot.Left.Height &&
+                    subtreeRoot.Right.Left.Height > subtreeRoot.Right.Right.Height)
+                {
+                    Console.WriteLine("rotate - right - left");
+                    RotateRight(subtreeRoot.Right);
+                    RotateLeft(subtreeRoot);
+                }
+            }
+
+            Rebalance(subtreeRoot.Parent);
         }
 
         private void RotateRight(Node node)
@@ -209,6 +214,16 @@ namespace Algorithms
             return subtreeRoot;
         }
 
+        private Node FindMin(Node subtreeRoot)
+        {
+            if (subtreeRoot.Height == -1)
+            {
+                return subtreeRoot.Parent;
+            }
+
+            return FindMin(subtreeRoot.Left);
+        }
+
         public bool Delete(int key)
         {
             Node node = Find(key);
@@ -218,7 +233,35 @@ namespace Algorithms
                 return false;
             }
 
-            throw new NotImplementedException();
+            if (node.Parent == null)
+            {
+                //do something!
+            }
+
+            if (node.Left.Height == -1 && node.Right.Height == -1)
+            {
+                //remove node
+            }
+
+            if (node.Left.Height == -1 && node.Right.Height != -1)
+            {
+                //exchange with right
+            }
+
+            if (node.Right.Height == -1 && node.Left.Height != -1)
+            {
+                //exchange with left
+            }
+
+            if (node.Right.Height != -1 && node.Left.Height != -1)
+            {
+                //find min for node.Right
+                //replace with min
+            }
+
+            //rebalance tree starting from parent
+
+            return true;
         }
 
         public List<string> Sort()
